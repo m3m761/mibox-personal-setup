@@ -1,0 +1,11 @@
+package:com.android.chrome
+package:com.esaba.downloader
+package:com.estrongs.android.pop
+package:com.google.android.apps.inputmethod.hindi
+package:com.google.android.apps.inputmethod.zhuyin
+package:com.google.android.inputmethod.japanese
+package:com.google.android.inputmethod.pinyin
+package:com.sharkiptvprofour.sharkiptvprofouriptvbox
+package:com.stremio.one
+package:eu.chainfire.tv.sideloadlauncher
+package:org.jellyfin.androidtv

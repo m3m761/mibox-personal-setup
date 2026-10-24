@@ -1,0 +1,43 @@
+flowchart TB
+    User[Malek with Mi Remote]
+    LAN[Home LAN: 192.168.100.0/24]
+
+    subgraph MiBox[Mi Box S - MIBOX3 - Android 9 - 2GB RAM]
+      subgraph Active[LAYER 1 - ACTIVE APPS]
+        Launcher[Projectivy Launcher - 50MB saved]
+        YT[YouTube TV]
+        NF[Netflix]
+        PV[Prime Video]
+        Str[Stremio]
+        IPTV[Shark IPTV]
+        Jelly[Jellyfin]
+        DL[Downloader AFTVnews]
+      end
+
+      subgraph Core[LAYER 2 - CORE SYSTEM - DO NOT TOUCH]
+        AOSP[Android 9 Core]
+        GMS[Google Play Services]
+        PStore[Play Store]
+        Amlogic[Amlogic hardware drivers]
+        WebView[WebView]
+      end
+
+      subgraph Disabled[LAYER 3 - DISABLED 33 pkgs]
+        Alph[Alphonso ACR - privacy]
+        MiBloat[Xiaomi Bloat x12]
+        GoogBloat[Google Bloat x15]
+        Kbd[Non-English keyboards x4]
+        ES[ES File Explorer UNINSTALLED]
+      end
+    end
+
+    User --> MiBox
+    MiBox --> LAN
+    Launcher --> YT
+    Launcher --> NF
+    Launcher --> PV
+    Launcher --> Str
+    Launcher --> IPTV
+    Launcher --> Jelly
+    Launcher --> DL
+    Active -.needs.-> Core
