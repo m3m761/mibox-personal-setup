@@ -27,17 +27,27 @@ Replaces the default Google TV launcher with **Projectivy Launcher** (cleaner, l
 
 ## Measured results (same device, same workload)
 
-| Metric | Before | After |
+| Metric | Before | After (v2 final) |
 |---|---|---|
-| Enabled packages | 95 | 62 |
-| Disabled packages | 2 | 35 |
-| Free RAM (idle) | 91 MB | 233 MB |
-| Available RAM | 377 MB | 648 MB |
+| Enabled packages | 95 | 58 |
+| Disabled packages | 2 | 37 |
+| Uninstalled | 0 | 2 (ES File Explorer, LTvLauncher backup) |
+| Free RAM (idle) | 91 MB | 203 MB |
+| **Available RAM** | 377 MB | **1,104 MB (1.1 GB)** |
 | Free storage | 653 MB | 835 MB (+182 MB) |
-| Launcher | Google TV launcher + Mi TV Home | Projectivy (clean, open) |
+| TV Apps bar | 10+ cluttered | 5 favorites only (Netflix, Prime, Shark, Stremio, YouTube) |
+| Launcher | Google TV + Mi TV Home | **Projectivy** (auto-rotating wallpaper) |
+| Chrome | visible | disabled/hidden |
+| Downloader | visible | disabled/hidden |
 | Boot time | baseline | ~30–50% faster |
 | Alphonso ACR tracking | active | **blocked** |
 | Xiaomi telemetry | active | **blocked** |
+
+## Known limitations (Mi Box specific)
+
+- **No live wallpapers.** Mi Box's Android TV firmware strips out live wallpaper support (`WallpaperManagerService` is hardcoded to `com.android.systemui/.ImageWallpaper`). Muzei, KLWP, and other live wallpaper apps **physically cannot work** on Mi Box without root. Projectivy's built-in rotating wallpaper is the best option.
+- **Projectivy Pro features locked.** The free Projectivy version doesn't allow hiding apps from the bar or changing tile size — those are $4.99 Pro features. Workaround used here: disable the apps you want hidden via ADB (e.g. Chrome, Downloader, LTvLauncher, Sideload Launcher), which also hides them from Projectivy automatically.
+- **ARM 32-bit.** Some newer 64-bit-only apps won't install. Not fixable without new hardware.
 
 ## Prerequisites
 

@@ -38,6 +38,11 @@ echo
 echo "--- Uninstalling ES File Explorer (known ad-fraud / spyware history) ---"
 uninstall com.estrongs.android.pop
 
+echo
+echo "--- Hiding Chrome + Downloader (not needed day-to-day) ---"
+disable com.android.chrome
+disable com.esaba.downloader
+
 # --- Phase 2: Xiaomi bloat ---
 echo
 echo "--- Disabling Xiaomi bloat ---"
