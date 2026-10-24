@@ -95,14 +95,30 @@ KEYBOARDS=(
 )
 for p in "${KEYBOARDS[@]}"; do disable "$p"; done
 
-# --- Phase 6 (optional — only run AFTER Projectivy is installed) ---
-# Uncomment the following lines to replace the Google TV launcher with Projectivy.
-# Make sure com.spocky.projengmenu is installed first (install via Play Store on the TV).
+# --- Phase 6: Launcher swap (requires Projectivy installed first) ---
+# Projectivy install options:
+#   A) Via Play Store on TV:
+#        adb shell am start -a android.intent.action.VIEW -d "market://details?id=com.spocky.projengmenu"
+#   B) Via Aptoide direct APK (requires curl):
+#        curl -sfL -o Projectivy.apk \
+#          "https://pool.apk.aptoide.com/appstv/com-spocky-projengmenu-82-71602658-b1c45b01481b80ea9435bfb774316405.apk"
+#        adb -s "$TARGET" install -r Projectivy.apk
 #
-# echo
-# echo "--- Replacing Google TV launcher with Projectivy ---"
-# adb -s "$TARGET" shell cmd package set-home-activity com.spocky.projengmenu/.MainActivity
-# disable com.google.android.tvlauncher
+# Alternative (open-source) launcher: LtvLauncher — install via:
+#   curl -sfL -o LTvLauncher.apk \
+#     "https://github.com/leanbitlab-org/LtvLauncher/releases/download/v2026.10.03/LTvLauncher-armeabi-v7a-release.apk"
+#   adb -s "$TARGET" install -r LTvLauncher.apk
+#
+# Then:
+echo
+echo "--- Replacing Google TV launcher with Projectivy ---"
+if adb -s "$TARGET" shell pm list packages com.spocky.projengmenu 2>&1 | grep -q projengmenu; then
+  adb -s "$TARGET" shell cmd package set-home-activity com.spocky.projengmenu/.ui.home.MainActivity
+  disable com.google.android.tvlauncher
+  echo "  Projectivy set as default home, Google TV launcher disabled."
+else
+  echo "  Projectivy not installed — skipping launcher swap. Install it first (see Phase 6 instructions)."
+fi
 
 echo
 echo "=== Done. Rebooting Mi Box to apply changes ==="

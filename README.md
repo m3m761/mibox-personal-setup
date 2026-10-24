@@ -30,11 +30,14 @@ Replaces the default Google TV launcher with **Projectivy Launcher** (cleaner, l
 | Metric | Before | After |
 |---|---|---|
 | Enabled packages | 95 | 62 |
-| Free RAM | 91 MB | 233 MB |
+| Disabled packages | 2 | 35 |
+| Free RAM (idle) | 91 MB | 233 MB |
 | Available RAM | 377 MB | 648 MB |
-| Free storage | 653 MB | 704+ MB (grows after cache clear) |
+| Free storage | 653 MB | 835 MB (+182 MB) |
+| Launcher | Google TV launcher + Mi TV Home | Projectivy (clean, open) |
 | Boot time | baseline | ~30–50% faster |
-| ACR spying | active | **blocked** |
+| Alphonso ACR tracking | active | **blocked** |
+| Xiaomi telemetry | active | **blocked** |
 
 ## Prerequisites
 
